@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="HelloWorldServiceService" targetNamespace="http://service.soap.services.web.ground.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://service.soap.services.web.ground.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+<xs:schema xmlns:tns="http://service.soap.services.web.ground.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://service.soap.services.web.ground.com/">
+  <xs:complexType name="response">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="result" type="xs:string"/>
+      <xs:element minOccurs="0" name="status" type="tns:statusType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="statusType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="OK"/>
+      <xs:enumeration value="FAIL"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="String" nillable="true" type="xs:string"/>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="GroundSoapException">
+    <wsdl:part name="GroundSoapException" element="tns:String">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getHelloWorldAsStringOperationNameResponse">
+    <wsdl:part name="lookupOutput" type="tns:response">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getHelloWorldAsStringOperationName">
+    <wsdl:part name="lookupInput" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="HelloWorldService">
+    <wsdl:operation name="getHelloWorldAsStringOperationName">
+      <wsdl:input name="getHelloWorldAsStringOperationName" message="tns:getHelloWorldAsStringOperationName">
+    </wsdl:input>
+      <wsdl:output name="getHelloWorldAsStringOperationNameResponse" message="tns:getHelloWorldAsStringOperationNameResponse">
+    </wsdl:output>
+      <wsdl:fault name="GroundSoapException" message="tns:GroundSoapException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="HelloWorldServiceServiceSoapBinding" type="tns:HelloWorldService">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getHelloWorldAsStringOperationName">
+      <soap:operation soapAction="urn:getHelloWorldAsStringAction" style="rpc"/>
+      <wsdl:input name="getHelloWorldAsStringOperationName">
+        <soap:body use="literal" namespace="http://service.soap.services.web.ground.com/"/>
+      </wsdl:input>
+      <wsdl:output name="getHelloWorldAsStringOperationNameResponse">
+        <soap:body use="literal" namespace="http://service.soap.services.web.ground.com/"/>
+      </wsdl:output>
+      <wsdl:fault name="GroundSoapException">
+        <soap:fault name="GroundSoapException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="HelloWorldServiceService">
+    <wsdl:port name="HelloWorldServicePort" binding="tns:HelloWorldServiceServiceSoapBinding">
+      <soap:address location="http://localhost:9090/HelloWorldServicePort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

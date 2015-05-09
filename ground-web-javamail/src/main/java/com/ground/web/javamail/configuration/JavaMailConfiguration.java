@@ -29,7 +29,6 @@ public class JavaMailConfiguration {
 		return new HelloWorldImpl();
 	}
 
-
 	@Bean
 	public SimpleMailMessage templateMessage() {
 		SimpleMailMessage bean = new SimpleMailMessage();
@@ -42,46 +41,43 @@ public class JavaMailConfiguration {
 	@Bean
 	public VelocityEngineFactoryBean velocityEngine() {
 		VelocityEngineFactoryBean bean = new VelocityEngineFactoryBean();
-		
+
 		bean.setVelocityProperties(getVal());
-		//bean.setResourceLoaderPath("classpath:/com.ground.web.javamail.configuration");
-		//bean.setPreferFileSystemAccess(false);
+		// bean.setResourceLoaderPath("classpath:/com.ground.web.javamail.configuration");
+		// bean.setPreferFileSystemAccess(false);
 		return bean;
 	}
-	
+
 	private Properties getVal() {
 		Properties properties = new Properties();
 		properties.setProperty("resource.loader", "class");
 		properties.setProperty("class.resource.loader.class", "org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader");
 		return properties;
-		
+
 	}
 
 	private Session session() {
-		Session session = Session.getInstance(getMailProperties(),
-				new javax.mail.Authenticator() {
-					protected PasswordAuthentication getPasswordAuthentication() {
-						return new PasswordAuthentication("groundapp123@gmail.com", "Madhubani@123");
-					}
-				});
+		Session session = Session.getInstance(getMailProperties(), new javax.mail.Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication("groundapp123@gmail.com", "Madhubani@123");
+			}
+		});
 		return session;
 	}
 
 	@Bean
 	public JavaMailSender javaMailService() {
 		JavaMailSenderImpl javaMailSender = new JavaMailSenderImpl();
-		//javaMailSender.setHost("smtp.gmail.com");
-		//javaMailSender.setPort(587);
+		// javaMailSender.setHost("smtp.gmail.com");
+		// javaMailSender.setPort(587);
 		javaMailSender.setSession(session());
-		//javaMailSender.setJavaMailProperties(getMailProperties());
+		// javaMailSender.setJavaMailProperties(getMailProperties());
 		return javaMailSender;
 	}
 
 	private Properties getMailProperties() {
 		Properties properties = new Properties();
-		
-		
-		
+
 		properties.put("mail.smtp.auth", "true");
 		properties.put("mail.smtp.starttls.enable", "true");
 		properties.put("mail.smtp.host", "smtp.gmail.com");

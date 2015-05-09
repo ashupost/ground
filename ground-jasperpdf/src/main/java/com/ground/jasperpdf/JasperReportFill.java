@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.util.Assert;
+
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRExporterParameter;
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -22,9 +24,10 @@ import net.sf.jasperreports.export.SimplePdfExporterConfiguration;
 import com.itextpdf.text.pdf.PdfWriter;
 
 public class JasperReportFill {
-	@SuppressWarnings("deprecation")
 	public static void main(String[] args) throws JRException {
 		InputStream inputStream = JasperReportFill.class.getResourceAsStream("/com/ground/jasperpdf/jasper_report_template.jrxml");
+		Assert.notNull(inputStream, "jasper_report_template.jrxml is not loaded and inputStream object is null");
+
 		JasperReport jasperReport = JasperCompileManager.compileReport(inputStream);
 		DataBeanList DataBeanList = new DataBeanList();
 		ArrayList<DataBean> dataList = DataBeanList.getDataBeanList();

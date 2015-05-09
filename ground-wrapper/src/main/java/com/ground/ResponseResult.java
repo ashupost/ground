@@ -10,13 +10,6 @@ public class ResponseResult  implements Serializable{
 	private List<ResultRequest> resultRequestList;
 	
 	private List<ResultSession> sessionList;
-	
-	
-
-	
-	
-	
-	
 
 	public List<ResultSession> getSessionList() {
 		return sessionList;
@@ -33,7 +26,5 @@ public class ResponseResult  implements Serializable{
 	public void setResultRequestList(List<ResultRequest> resultRequestList) {
 		this.resultRequestList = resultRequestList;
 	}
-	
-
 	
 }

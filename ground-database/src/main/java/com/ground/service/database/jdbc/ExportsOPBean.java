@@ -10,12 +10,7 @@
  */
 package com.ground.service.database.jdbc;
 
-import java.util.Enumeration;
 import java.util.List;
-
-import org.codehaus.jackson.map.annotate.JsonSerialize;
-
-
 
 public class ExportsOPBean extends GDValueBean {
 
@@ -24,8 +19,6 @@ public class ExportsOPBean extends GDValueBean {
 	private boolean error;
 	private List<?> exportsOPBeanList;
 	private String result;
-	
-	
 
 	public String getResult() {
 		return result;

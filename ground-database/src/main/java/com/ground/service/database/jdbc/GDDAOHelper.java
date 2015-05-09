@@ -2,9 +2,7 @@ package com.ground.service.database.jdbc;
 
 import java.sql.Types;
 
-
-public class GDDAOHelper
-{
+public class GDDAOHelper {
 
 	public static final String TYPE_VARCHAR = "VARCHAR";
 	public static final String TYPE_INTEGER = "INTEGER";
@@ -13,19 +11,19 @@ public class GDDAOHelper
 	public static final String TYPE_DOUBLE = "DOUBLE";
 	public static final String TYPE_DECIMAL = "DECIMAL";
 	public static final String TYPE_BLOB = "BLOB";
-	public static final String TYPE_BINARY_STREAM="VARBINARY";
+	public static final String TYPE_BINARY_STREAM = "VARBINARY";
 	public static final String TYPE_TIMESTAMP = "TIMESTAMP";
 	public static final String TYPE_ORACLE_CURSOR = "CURSOR";
 	public static final String TYPE_BIGINT = "BIGINT";
 
 	/**
-	 * @param type	String describing Sql type of the input/output parameter
-	 * @return	integer consntant from Types class representing that Sql type
+	 * @param type
+	 *            String describing Sql type of the input/output parameter
+	 * @return integer consntant from Types class representing that Sql type
 	 */
-	public int convertType(String type)
-	{
+	public int convertType(String type) {
 
-		//Will be used to return parameter type after reading from xml file  
+		// Will be used to return parameter type after reading from xml file
 		if (type.equals(TYPE_VARCHAR))
 			return Types.VARCHAR;
 		else if (type.equals(TYPE_INTEGER))
@@ -43,9 +41,9 @@ public class GDDAOHelper
 		else if (type.equals(TYPE_TIMESTAMP))
 			return Types.TIMESTAMP;
 		else if (type.equals(TYPE_BINARY_STREAM))
-					return Types.LONGVARBINARY;
+			return Types.LONGVARBINARY;
 		else if (type.equals(TYPE_BIGINT))
-		      return Types.BIGINT;				
+			return Types.BIGINT;
 		else
 			return Types.NULL;
 

@@ -1,7 +1,8 @@
 package com.ground.service.database.jdbc;
+
 public class GDSPException extends RuntimeException {
 	private static final long serialVersionUID = 1L;
-	
+
 	private String exceptionMsg;
 
 	public GDSPException(String exceptionMsg) {

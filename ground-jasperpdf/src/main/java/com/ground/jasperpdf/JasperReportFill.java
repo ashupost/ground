@@ -21,53 +21,49 @@ import net.sf.jasperreports.export.SimplePdfExporterConfiguration;
 
 import com.itextpdf.text.pdf.PdfWriter;
 
-
 public class JasperReportFill {
-		@SuppressWarnings("deprecation")
-		public static void main(String[] args) throws JRException {
-			InputStream inputStream = JasperReportFill.class.getResourceAsStream("/com/ground/jasperpdf/jasper_report_template.jrxml");
-			JasperReport jasperReport = JasperCompileManager.compileReport(inputStream);
-			DataBeanList DataBeanList = new DataBeanList();
-		    ArrayList<DataBean> dataList = DataBeanList.getDataBeanList();
+	@SuppressWarnings("deprecation")
+	public static void main(String[] args) throws JRException {
+		InputStream inputStream = JasperReportFill.class.getResourceAsStream("/com/ground/jasperpdf/jasper_report_template.jrxml");
+		JasperReport jasperReport = JasperCompileManager.compileReport(inputStream);
+		DataBeanList DataBeanList = new DataBeanList();
+		ArrayList<DataBean> dataList = DataBeanList.getDataBeanList();
 
-		    JRBeanCollectionDataSource beanColDataSource =  new JRBeanCollectionDataSource(dataList);
+		JRBeanCollectionDataSource beanColDataSource = new JRBeanCollectionDataSource(dataList);
 
-		    Map<String,Object> parameters = new HashMap<String,Object>();
-		    parameters.put("ReportTitle", "List of Contacts");
-		    parameters.put("Author", "Prepared By Veeru");
-		      
-		    JasperPrint jasperPrint  = JasperFillManager.fillReport(jasperReport,  parameters,   beanColDataSource);
-		      
-		      if(jasperPrint != null){
-		    	  
-		    	  
-		    	  JRPdfExporter exporter = new JRPdfExporter();
-		    	  exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
-		    	  exporter.setExporterOutput(new SimpleOutputStreamExporterOutput("C://pdf/sample_reportExport.pdf"));
-		    	  
-		    	  SimplePdfExporterConfiguration configuration = new SimplePdfExporterConfiguration();
-		    	  configuration.set128BitKey(true);
-		    	  configuration.setUserPassword("password11");
-		    	  configuration.setOwnerPassword("password");
-		    	  configuration.setEncrypted(true);
-		    	  configuration.setPermissions(PdfWriter.ALLOW_COPY | PdfWriter.ALLOW_PRINTING);
-		    	  
-		    	  exporter.setConfiguration(configuration);
-		    	  exporter.exportReport();
-		    	  
-		    	  JasperExportManager.exportReportToPdfFile(jasperPrint, "C://pdf/sample_report.pdf");
-		    	  JasperExportManager.exportReportToHtmlFile(jasperPrint,  "C://pdf/sample_report.html");
-		    	  
-		    	  JRXlsExporter XLSexporter = new JRXlsExporter();
+		Map<String, Object> parameters = new HashMap<String, Object>();
+		parameters.put("ReportTitle", "List of Contacts");
+		parameters.put("Author", "Prepared By Veeru");
 
-		    	  XLSexporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint);
-		    	  XLSexporter.setParameter(JRExporterParameter.OUTPUT_FILE_NAME, "C://pdf/sample_report.xls");
+		JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, beanColDataSource);
 
-		    	  XLSexporter.exportReport();
-		      }
-		      
-		      
+		if (jasperPrint != null) {
+
+			JRPdfExporter exporter = new JRPdfExporter();
+			exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
+			exporter.setExporterOutput(new SimpleOutputStreamExporterOutput("C://pdf/sample_reportExport.pdf"));
+
+			SimplePdfExporterConfiguration configuration = new SimplePdfExporterConfiguration();
+			configuration.set128BitKey(true);
+			configuration.setUserPassword("password11");
+			configuration.setOwnerPassword("password");
+			configuration.setEncrypted(true);
+			configuration.setPermissions(PdfWriter.ALLOW_COPY | PdfWriter.ALLOW_PRINTING);
+
+			exporter.setConfiguration(configuration);
+			exporter.exportReport();
+
+			JasperExportManager.exportReportToPdfFile(jasperPrint, "C://pdf/sample_report.pdf");
+			JasperExportManager.exportReportToHtmlFile(jasperPrint, "C://pdf/sample_report.html");
+
+			JRXlsExporter XLSexporter = new JRXlsExporter();
+
+			XLSexporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint);
+			XLSexporter.setParameter(JRExporterParameter.OUTPUT_FILE_NAME, "C://pdf/sample_report.xls");
+
+			XLSexporter.exportReport();
 		}
 
+	}
 
 }

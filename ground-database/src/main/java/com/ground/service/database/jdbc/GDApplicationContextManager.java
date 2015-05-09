@@ -2,41 +2,30 @@ package com.ground.service.database.jdbc;
 
 import org.springframework.web.context.WebApplicationContext;
 
-
-public class GDApplicationContextManager
-{
+public class GDApplicationContextManager {
 	static WebApplicationContext applicationContext = null;
-	
-
 
 	/**
-	 * @return
-	 * ApplicationContext
+	 * @return ApplicationContext
 	 */
-	public static WebApplicationContext getBIPApplicationContext()
-	{
+	public static WebApplicationContext getBIPApplicationContext() {
 		return applicationContext;
 	}
-	
-	public static void setBIPApplicationContext(WebApplicationContext applicationContextBIP)
-	{
-		
+
+	public static void setBIPApplicationContext(WebApplicationContext applicationContextBIP) {
+
 		GDApplicationContextManager.applicationContext = applicationContextBIP;
 	}
 
-	
 	/**
 	 * @param beanId
-	 * @return
-	 * Object
+	 * @return Object
 	 */
-	public static Object getBean(String beanId)
-	{
+	public static Object getBean(String beanId) {
 		return applicationContext.getBean(beanId);
 	}
-	
-	public static Object getBusinessService(String businessServiceKey)
-	{
+
+	public static Object getBusinessService(String businessServiceKey) {
 		return applicationContext.getBean(businessServiceKey);
 	}
 

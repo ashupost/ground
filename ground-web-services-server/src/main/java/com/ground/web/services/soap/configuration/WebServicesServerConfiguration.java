@@ -13,7 +13,7 @@ import com.ground.service.database.configuration.DatabaseConfiguration;
 @ComponentScan("com.ground.web.services.soap")
 @Import({ DatabaseConfiguration.class, ApplicationConfiguration.class })
 public class WebServicesServerConfiguration {
-	
+
 	@Bean
 	public SimpleJaxWsServiceExporter simpleJaxWsServiceExporter() {
 		SimpleJaxWsServiceExporter simpleJaxWsServiceExporter = new SimpleJaxWsServiceExporter();

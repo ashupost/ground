@@ -3,11 +3,10 @@ package com.ground.service.database.jdbc;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
 public class GDException extends Throwable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
 	public GDException() {
@@ -19,7 +18,7 @@ public class GDException extends Throwable {
 	public GDException(String message, Throwable throwable) {
 		super(message, throwable);
 		printStackTrace();
-		logger.error(message,throwable);
+		logger.error(message, throwable);
 	}
 
 	public GDException(String message) {
@@ -31,7 +30,7 @@ public class GDException extends Throwable {
 	public GDException(Throwable throwable) {
 		super(throwable);
 		printStackTrace();
-		logger.error("",throwable);
+		logger.error("", throwable);
 	}
 
 }

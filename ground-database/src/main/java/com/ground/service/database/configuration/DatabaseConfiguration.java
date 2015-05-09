@@ -16,32 +16,32 @@ import com.ground.service.database.jdbc.GDTransactionManager;
 @EnableAspectJAutoProxy
 @ImportResource("classpath:/spring-xml/spring-resource.xml")
 public class DatabaseConfiguration {
-	
+
 	@Bean
-    public DriverManagerDataSource dataSource() {
-        DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
-        driverManagerDataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        driverManagerDataSource.setUrl("jdbc:mysql://127.0.0.1:3306/mhtsoft1_ground");
-        driverManagerDataSource.setUsername("mhtsoft1_ground");
-        driverManagerDataSource.setPassword("mhtsoft1_ground");
-        return driverManagerDataSource;
-    }   
-	
-	@Bean   
-	public DataSourceTransactionManager transactionManager() {
-	    return new DataSourceTransactionManager(dataSource());
+	public DriverManagerDataSource dataSource() {
+		DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
+		driverManagerDataSource.setDriverClassName("com.mysql.jdbc.Driver");
+		driverManagerDataSource.setUrl("jdbc:mysql://127.0.0.1:3306/mhtsoft1_ground");
+		driverManagerDataSource.setUsername("mhtsoft1_ground");
+		driverManagerDataSource.setPassword("mhtsoft1_ground");
+		return driverManagerDataSource;
 	}
-	
-	@Bean   
+
+	@Bean
+	public DataSourceTransactionManager transactionManager() {
+		return new DataSourceTransactionManager(dataSource());
+	}
+
+	@Bean
 	public GDTransactionManager gdTxManager() {
 		GDTransactionManager transactionManager = new GDTransactionManager();
 		transactionManager.setTransactionManager(transactionManager());
-	    return transactionManager;
+		return transactionManager;
 	}
-	
-	@Bean   
+
+	@Bean
 	public ExportsJDBC_BS exportsJDBC_BS() {
-	    return new ExportsJDBC_BS();
+		return new ExportsJDBC_BS();
 	}
-	
+
 }

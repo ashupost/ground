@@ -14,7 +14,7 @@ import com.ground.web.services.soap.model.HelloWorldResponse;
 //Service Endpoint Interface
 @WebService
 @SOAPBinding(style = Style.RPC)
-@HandlerChain(file = "../../../../../../handler-chain.xml") 
+@HandlerChain(file = "../../../../../../handler-chain.xml")
 public interface HelloWorldService {
 
 	@WebMethod(action = "urn:getHelloWorldAsStringAction", operationName = "getHelloWorldAsStringOperationName", exclude = false)

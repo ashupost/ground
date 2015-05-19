@@ -1,6 +1,7 @@
 package com.ground.jasperpdf;
 
 public class DataBean {
+	
 	private String name;
 	private String country;
 

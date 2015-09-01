@@ -74,7 +74,6 @@ public class JavaMailConfiguration {
 
 	private Properties getMailProperties() {
 		Properties properties = new Properties();
-
 		properties.put("mail.smtp.auth", "true");
 		properties.put("mail.smtp.starttls.enable", "true");
 		properties.put("mail.smtp.host", "smtp.gmail.com");

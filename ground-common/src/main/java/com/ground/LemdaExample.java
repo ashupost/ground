@@ -30,7 +30,7 @@ public class LemdaExample {
 		Predicate<Integer> isGreater3 = number -> number > 3;
 		Function<Integer, Predicate<Integer>> isGreater = pivot -> number -> number > 3;
 
-		System.out.println(values.stream().filter(isGreater.apply(3)).filter(LemdaExample::isEven).map(LemdaExample::doubleIt).findFirst().get());
+		System.out.println(values.stream().filter(isGreater.apply(3)).filter(LemdaExample::isEven ).map(LemdaExample::doubleIt).findFirst().get());
 	}
 
 }

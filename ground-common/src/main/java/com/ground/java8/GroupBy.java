@@ -17,6 +17,12 @@ public class GroupBy {
 		articles.add(new Article("t2", "a2", null));
 		articles.add(new Article("t3", "a3", null));
 		System.out.println(groupByAuthor(articles));
+		
+		articles.forEach(article -> {
+			System.out.println(article.getAuthor());
+		});
+		
+		System.out.println(Runtime.getRuntime().availableProcessors());
 
 	}
 
@@ -38,18 +44,25 @@ class Article {
 		this.tags = tags;
 	}
 
+	
+
 	public String getTitle() {
 		return title;
 	}
 
-	public String getAuthor() {
 
+
+	public String getAuthor() {
 		return author;
 	}
+
+
 
 	public List<String> getTags() {
 		return tags;
 	}
+
+
 
 	@Override
 	public String toString() {

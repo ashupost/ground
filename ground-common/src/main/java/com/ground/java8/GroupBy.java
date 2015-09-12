@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import javax.validation.constraints.NotNull;
+
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class GroupBy {
@@ -26,7 +28,7 @@ public class GroupBy {
 
 	}
 
-	public static Map<String, List<Article>> groupByAuthor(List<Article> articles) {
+	public static Map<String, List<Article>> groupByAuthor(@NotNull List<Article> articles) {
 		return articles.stream().collect(Collectors.groupingBy(Article::getAuthor));
 	}
 

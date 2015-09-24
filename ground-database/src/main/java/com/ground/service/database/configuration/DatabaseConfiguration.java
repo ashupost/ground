@@ -1,10 +1,12 @@
 package com.ground.service.database.configuration;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.ImportResource;
+import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
@@ -17,6 +19,8 @@ import com.ground.service.database.jdbc.GDTransactionManager;
 @ImportResource("classpath:/spring-xml/spring-resource.xml")
 public class DatabaseConfiguration {
 
+	
+	
 	@Bean
 	public DriverManagerDataSource dataSource() {
 		DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
@@ -24,6 +28,7 @@ public class DatabaseConfiguration {
 		driverManagerDataSource.setUrl("jdbc:mysql://127.0.0.1:3306/mhtsoft1_ground");
 		driverManagerDataSource.setUsername("mhtsoft1_ground");
 		driverManagerDataSource.setPassword("mhtsoft1_ground");
+		
 		return driverManagerDataSource;
 	}
 
